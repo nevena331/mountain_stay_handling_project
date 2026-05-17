@@ -50,22 +50,22 @@ double Room::getTotalPrice() const {
 
 std::string Room::getDescription() const {
     std::ostringstream oss;
-    oss << bedCount << " легла, " << std::fixed << std::setprecision(2)
-        << pricePerBed << " BGN/легло";
+    oss << bedCount << " beds, " << std::fixed << std::setprecision(2)
+        << pricePerBed << " BGN/bed";
     if (hasOwnBathroom) {
-        oss << ", със собствен WC";
+        oss << ", with private WC";
     }
     return oss.str();
 }
 
 void Room::printInfo() const {
-    std::cout << "\n  ┌─ СТАЯ " << roomNumber << " ─┐\n";
-    std::cout << "  │ Легла: " << bedCount << "\n";
-    std::cout << "  │ Цена/легло: " << std::fixed << std::setprecision(2)
+    std::cout << "\n  ┌─ ROOM " << roomNumber << " ─┐\n";
+    std::cout << "  │ Beds: " << bedCount << "\n";
+    std::cout << "  │ Price per bed: " << std::fixed << std::setprecision(2)
               << pricePerBed << " BGN\n";
-    std::cout << "  │ Обща цена: " << std::fixed << std::setprecision(2)
+    std::cout << "  │ Total price: " << std::fixed << std::setprecision(2)
               << getTotalPrice() << " BGN\n";
-    std::cout << "  │ WC: " << (hasOwnBathroom ? "✓ Собствен" : "✗ Общ")
+    std::cout << "  │ WC: " << (hasOwnBathroom ? "✓ Private" : "✗ Shared")
               << "\n";
     std::cout << "  └─────────────────────┘\n";
 }

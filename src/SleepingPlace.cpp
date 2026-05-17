@@ -42,9 +42,9 @@ void SleepingPlace::printInfo() const {
     cout << "╔═══════════════════════════════════════════╗\n";
     cout << "║ " << left << setw(39) << name << " ║\n";
     cout << "╟───────────────────────────────────────────╢\n";
-    cout << "║ Координати: " << fixed << setprecision(4)
+    cout << "║ Coordinates: " << fixed << setprecision(4)
               << latitude << "°, " << longitude << "°\n";
-    cout << "║ Височина: " << altitude << " м\n";
-    cout << "║ Описание: " << getDescription() << "\n";
+    cout << "║ Altitude: " << altitude << " m\n";
+    cout << "║ Description: " << getDescription() << "\n";
     cout << "╚═══════════════════════════════════════════╝\n";
 }
