@@ -1,0 +1,66 @@
+
+classDiagram
+    class SleepingPlace {
+        <<abstract>>
+        - string name
+        - double latitude
+        - double longitude
+        - int altitude
+    }
+
+    class Hut {
+        - List~Room~ rooms
+        - bool hasCanteen
+        - bool hasElectricity
+        - bool hasWater
+    }
+
+    class Camping {
+        - int tentAreaSqM
+        - int outdoorSpots
+        - double fireFee
+    }
+
+    class Room {
+        - int bedCount
+        - double bedPrice
+        - bool hasPrivateBathroom
+        - string roomNumber
+    }
+
+    class Trail {
+        - SleepingPlace start
+        - SleepingPlace end
+        - double lengthKm
+        - double elevationGainM
+        - int difficulty
+    }
+
+    class Tourist {
+        - string name
+        - string phone
+        - List~SleepingPlace~ visitedPlaces
+    }
+
+    class Booking {
+        - Tourist tourist
+        - SleepingPlace place
+        - DateTime date
+        - double finalPrice
+    }
+
+    class HikingGroup {
+        - List~Tourist~ tourists
+        - Tourist leader
+        - double groupDiscount
+    }
+
+    SleepingPlace <|-- Hut : inheritance
+    SleepingPlace <|-- Camping : inheritance
+    Hut "1" *-- "many" Room : composition
+    Trail "1" o-- "1" SleepingPlace : start
+    Trail "1" o-- "1" SleepingPlace : end
+    Tourist "*" o-- "*" SleepingPlace : visited
+    Booking "*" --> "1" Tourist : for
+    Booking "*" --> "1" SleepingPlace : for
+    HikingGroup "1" o-- "many" Tourist : members
