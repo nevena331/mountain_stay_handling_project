@@ -30,7 +30,10 @@ public:
     int getVisitedCount() const;
 
     shared_ptr<SleepingPlace> getVisitedPlace(int index) const;
+    
+    void printInfo() const;
 
+    string getDescription() const;
     // Setters
     void setName(const string& newName);
     void setPhone(const string& newPhone);
@@ -39,7 +42,4 @@ public:
 
     bool hasVisited(shared_ptr<SleepingPlace> place) const;
 
-    void printInfo() const;
-
-    string getDescription() const;
 };

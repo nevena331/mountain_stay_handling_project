@@ -32,13 +32,14 @@ public:
     shared_ptr<SleepingPlace> getPlace() const;
     time_t getBookingDate() const;
     double getFinalPrice() const;
-
-    // Setters
-    void setFinalPrice(double price);
-
+    
     string getBookingDateString() const;
 
     void printInfo() const;
 
     string getDescription() const;
+    
+    // Setters
+    void setFinalPrice(double price);
+
 };

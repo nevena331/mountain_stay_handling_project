@@ -1,6 +1,7 @@
 #include "Tourist.h"
 #include <iostream>
 #include <iomanip>
+#include <stdexcept>
 
 using namespace std;
 
@@ -29,15 +30,24 @@ shared_ptr<SleepingPlace> Tourist::getVisitedPlace(int index) const {
 }
 
 void Tourist::setName(const string& newName) {
+    if(newName.empty()) {
+        throw invalid_argument("Name cannot be empty");
+    }
     name = newName;
 }
 
 void Tourist::setPhone(const string& newPhone) {
+    if(newPhone.empty()) {
+        throw invalid_argument("Phone cannot be empty");
+    }
     phone = newPhone;
 }
 
 void Tourist::addVisitedPlace(shared_ptr<SleepingPlace> place) {
-    if (place && !hasVisited(place)) {
+    if(!place) {
+        throw invalid_argument("Place cannot be null");
+    }
+    if (!hasVisited(place)) {
         visitedPlaces.push_back(place);
     }
 }

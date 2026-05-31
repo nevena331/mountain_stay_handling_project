@@ -30,6 +30,10 @@ public:
     double getGroupDiscount() const;
 
     shared_ptr<Tourist> getTourist(int index) const;
+    
+    void printInfo() const;
+
+    string getDescription() const;
 
     // Setters
     void setLeader(shared_ptr<Tourist> newLeader);
@@ -41,9 +45,6 @@ public:
 
     bool hasTourist(shared_ptr<Tourist> tourist) const;
 
-    void printInfo() const;
-
-    string getDescription() const;
 
     double calculateGroupPrice(double basePrice) const;
 };

@@ -2,6 +2,7 @@
 #include <iostream>
 #include <iomanip>
 #include <algorithm>
+#include <stdexcept>
 
 using namespace std;
 
@@ -38,17 +39,23 @@ shared_ptr<Tourist> HikingGroup::getTourist(int index) const {
 void HikingGroup::setLeader(shared_ptr<Tourist> newLeader) {
     if (newLeader) {
         leader = newLeader;
+    }else{
+        throw invalid_argument("Leader cannot be null");
     }
 }
 
 void HikingGroup::setGroupDiscount(double discount) {
+    if(discount < 0 || discount > 100) {
+        throw invalid_argument("Discount must be between 0 and 100");
+    }
     groupDiscount = discount;
-    if (groupDiscount < 0) groupDiscount = 0;
-    if (groupDiscount > 100) groupDiscount = 100;
 }
 
 void HikingGroup::addTourist(shared_ptr<Tourist> tourist) {
-    if (tourist && !hasTourist(tourist)) {
+    if(!tourist) {
+        throw invalid_argument("Tourist cannot be null");
+    }
+    if (!hasTourist(tourist)) {
         tourists.push_back(tourist);
     }
 }

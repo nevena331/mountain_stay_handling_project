@@ -2,6 +2,7 @@
 #include <iostream>
 #include <iomanip>
 #include <sstream>
+#include <stdexcept> 
 
 using namespace std;
 
@@ -31,6 +32,7 @@ double Booking::getFinalPrice() const {
 
 void Booking::setFinalPrice(double price) {
     if (price >= 0) finalPrice = price;
+    else throw invalid_argument("Final price cannot be negative.");
 }
 
 string Booking::getBookingDateString() const {
